@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Visitas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Visitas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- fab placed to the top end -->
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="presentModal()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item button detail *ngFor="let visit of visits; index as position" (click)="presentModal(visit)">
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>{{ visit.person.name }} ({{ visit.person.description }})</h3>
+        </ion-text>
+        <p>{{ visit.location }}</p>
+        <ion-text color="secondary">
+          <p>{{ parseDate(visit.date) }}</p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

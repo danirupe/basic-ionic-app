@@ -1,0 +1,32 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Añadir visita</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>Persona</ion-label>
+      <ion-select placeholder="Seleccionar">
+        <ion-select-option *ngFor="let agendaItem of agenda" [value]="agendaItem">{{ agendaItem.name + ' (' + agendaItem.description + ')' }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Localización</ion-label>
+      <ion-input [value]="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Fecha
+      </ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" max="2021-03-02" value="{{ date }}"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-button color="success">Guardar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
